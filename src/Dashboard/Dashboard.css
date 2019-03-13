@@ -1,0 +1,8 @@
+.Dashboard__wrapper {
+  display: flex;
+}
+
+.Dashboard__container {
+  display: flex;
+  flex: 1;
+}
