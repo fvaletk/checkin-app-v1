@@ -4,6 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
 
 /** Icons */
 import ViewListIcon from "@material-ui/icons/ViewList";
@@ -14,10 +15,10 @@ import AssigmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import "./Sidebar.css";
 
 /** Methods */
-export class Sidebar extends Component {
+class Sidebar extends Component<RouteComponentProps> {
   render() {
     const { props } = this;
-    // const { history } = props;
+    const { history } = props;
 
     const listClasses = {
       root: "Sidebar__links"
@@ -49,11 +50,11 @@ export class Sidebar extends Component {
           <div className="Sidebar__divider" />
           <List classes={listClasses}>
             <ListItem
-              component="a"
-              href="/checkins"
+              // component={(props: any) => <NavLink to="/checkins" {...props}/>}
+              onClick={() => history.push('/checkins')}
               button
               classes={listItemClasses}
-              selected
+              selected={ history.location.pathname == '/checkins' }
             >
               <ListItemIcon classes={listItemIconClasses}>
                 <AssigmentTurnedInIcon />
@@ -62,10 +63,11 @@ export class Sidebar extends Component {
             </ListItem>
 
             <ListItem
-              component="a"
-              href="/projects"
+              // component={(props: any) => <NavLink to="/projects" {...props}/>}
+              onClick={() => history.push('/projects')}
               button
               classes={listItemClasses}
+              selected={ history.location.pathname == '/projects' }
             >
               <ListItemIcon classes={listItemIconClasses}>
                 <ViewListIcon />
@@ -74,10 +76,11 @@ export class Sidebar extends Component {
             </ListItem>
 
             <ListItem
-              component="a"
-              href="/team"
+              // component={(props: any) => <NavLink to="/team" {...props}/>}
+              onClick={() => history.push('/team')}
               button
               classes={listItemClasses}
+              selected={ history.location.pathname == '/team' }
             >
               <ListItemIcon classes={listItemIconClasses}>
                 <GroupIcon />
@@ -90,3 +93,5 @@ export class Sidebar extends Component {
     );
   }
 }
+
+export default withRouter(Sidebar);
