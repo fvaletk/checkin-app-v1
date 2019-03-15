@@ -16,6 +16,9 @@ import "./Sidebar.css";
 /** Methods */
 export class Sidebar extends Component {
   render() {
+    const { props } = this;
+    // const { history } = props;
+
     const listClasses = {
       root: "Sidebar__links"
     };
@@ -47,7 +50,7 @@ export class Sidebar extends Component {
           <List classes={listClasses}>
             <ListItem
               component="a"
-              href="/"
+              href="/checkins"
               button
               classes={listItemClasses}
               selected
